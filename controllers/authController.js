@@ -1,17 +1,8 @@
 const Usuario = require("../models/Usuario");
 const bcrypt = require('bcrypt');
-const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 exports.login = async (req,res)=>{
-    const errores = validationResult(req);//devueve en formato de array
-    if(!errores.isEmpty()){
-        return res.status(400).json({
-            ok:false,
-            msg:errores.array()
-        })
-    }
-
     //Extraer email y password
     const {email,password} = req.body;
     try {
