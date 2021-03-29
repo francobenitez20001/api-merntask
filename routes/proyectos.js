@@ -11,4 +11,10 @@ router.post('/', auth, [
 
 router.get('/', auth,proyectoController.obtenerProyectos);
 
+router.put('/:id',auth,[
+    check('nombre','El nombre es obligatorio').not().isEmpty()
+],validatorParams,proyectoController.modificarProyecto);
+
+router.delete('/:id',auth,proyectoController.eliminarProyecto);
+
 module.exports = router;
