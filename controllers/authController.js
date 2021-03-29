@@ -41,3 +41,16 @@ exports.login = async (req,res)=>{
         })
     }
 }
+
+exports.obtenerUsuario = async(req,res)=>{
+    try {
+        const usuario = await Usuario.findById(req.usuario.id).select('-password');//trae todos los campos menos password
+        res.status(200).json({ok:true,usuario})
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok:false,
+            msg:'Ha ocurrido un error'
+        })
+    }
+}
