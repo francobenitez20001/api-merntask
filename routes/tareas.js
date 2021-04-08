@@ -10,7 +10,7 @@ router.post('/', auth, [
     check('proyecto','El proyecto es obligatorio').not().isEmpty()
 ],validatorParams,tareaController.crearTarea);
 
-router.get('/', auth,tareaController.obtenerTareas);
+router.get('/:id', auth,tareaController.obtenerTareas);
 
 router.put('/:id',auth,[
     check('nombre','El nombre es obligatorio').not().isEmpty()

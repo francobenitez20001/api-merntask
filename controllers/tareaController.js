@@ -26,7 +26,7 @@ exports.crearTarea = async(req,res)=>{
 }
 
 exports.obtenerTareas = async (req,res)=>{
-    const {proyecto:idProyecto} = req.body;
+    const {id:idProyecto} = req.params;
     try {
          //Verificar que el proyecto de la tarea existe
          const proyecto = await Proyecto.findById(idProyecto);
